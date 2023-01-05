@@ -1,0 +1,10 @@
+# virtualenv
+.venv
+venv/
+
+# JetBrains
+.idea/
+
+# config
+config.py
+config/
