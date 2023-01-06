@@ -14,6 +14,8 @@
 from typing import Union
 from dataclasses import dataclass
 
+import requests
+
 
 @dataclass
 class User:
@@ -24,6 +26,7 @@ class User:
 
 
 def get_user_info(user: User) -> str:
+    #    user_1: User = User(42, 'Vasiliy', 23, 'vasya_pupkin@pochta.ru')
     return f'Возраст пользователя {user.name} - {user.age}, ' \
            f'а email - {user.email}'
 
@@ -60,13 +63,7 @@ class Config:
     tg_bot: TgBot
     db: DatabaseConfig
 
-
-if __name__ == '__main__':
-    # user_1: User = User(42, 'Vasiliy', 23, 'vasya_pupkin@pochta.ru')
-    # print(get_user_info(user_1))
-    # print(say_something(3))
-    # print("епта) начали изучать гит))")
-
+def create_some_example_bot():
     (BOT_TOKEN, ADMIN_IDS, DB_HOST, DB_USER, DB_PASSWORD, DATABASE) = ('1', [1], '1', '1', '1', '1')
 
     config: Config = Config(
@@ -82,3 +79,24 @@ if __name__ == '__main__':
                                        database=DATABASE))
 
     print(config.tg_bot.__annotations__)
+
+
+def get_fact_num():
+    num = input("Введите число, чтобы получить факт: ")
+    api_url = f'http://numbersapi.com/{num}'
+
+    response = requests.get(api_url)  # Отправляем GET-запрос и сохраняем ответ в переменной response
+
+    if response.status_code == 200:  # Если код ответа на запрос - 200, то смотрим, что пришло в ответе
+        print(response.text)
+    else:
+        print(response.status_code)  # При другом коде ответа выводим этот код
+
+
+if __name__ == '__main__':
+    # user_1: User = User(42, 'Vasiliy', 23, 'vasya_pupkin@pochta.ru')
+    # print(get_user_info(user_1))
+    # print(say_something(3))
+    # print("епта) начали изучать гит))")
+
+

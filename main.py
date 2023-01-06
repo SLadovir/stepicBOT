@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-def print_hi(name: str) -> None:
+def print_hi(name: str = input("ты кто такой? \n")) -> None:
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
@@ -14,7 +14,5 @@ class User:
 
 
 if __name__ == '__main__':
-    user_1: User = User(42, 'Vasiliy', 23, 'vasya_pupkin@pochta.ru')
-    print(user_1)
-
+    print_hi()
 
