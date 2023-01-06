@@ -1,4 +1,16 @@
 # Интересные приколюхи
+
+# Отправить
+# git status
+# git add <file>
+# git commit -m "comment"
+# git push origin main
+
+# Получить
+# git fetch
+# git merge
+# или - git pull
+
 from typing import Union
 from dataclasses import dataclass
 
