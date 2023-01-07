@@ -24,9 +24,9 @@ async def process_help_command(message: types.Message):
 async def process_help_command(message: types.Message):
     API_PHOTO_URL: str = 'https://aws.random.cat/meow'
     NAME: str = "котик"
-    response = requests.get(API_PHOTO_URL)
+    response: requests.Response = requests.get(API_PHOTO_URL)
     if response.status_code == 200:
-        photo_link = response.json()['file']
+        photo_link: str = response.json()['file']
         await message.answer_photo(photo=photo_link)
     else:
         await message.answer(f'Тут должен был быть {NAME}')
@@ -36,10 +36,10 @@ async def process_help_command(message: types.Message):
 async def process_help_command(message: types.Message):
     API_PHOTO_URL: str = 'https://random.dog/woof.json'
     NAME: str = "Собачка"
-    response = requests.get(API_PHOTO_URL)
+    response: requests.Response = requests.get(API_PHOTO_URL)
     if response.status_code == 200:
         print('что-то случилось')
-        video_link = response.json()['url']
+        video_link: str = response.json()['url']
         await message.answer_video(video=video_link)
     else:
         await message.answer(f'Тут должен был быть {NAME}')
