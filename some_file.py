@@ -63,6 +63,7 @@ class Config:
     tg_bot: TgBot
     db: DatabaseConfig
 
+
 def create_some_example_bot():
     (BOT_TOKEN, ADMIN_IDS, DB_HOST, DB_USER, DB_PASSWORD, DATABASE) = ('1', [1], '1', '1', '1', '1')
 
@@ -79,6 +80,9 @@ def create_some_example_bot():
                                        database=DATABASE))
 
     print(config.tg_bot.__annotations__)
+
+
+
 
 
 def get_fact_num():
