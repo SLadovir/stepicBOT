@@ -100,4 +100,7 @@ if __name__ == '__main__':
     # print(say_something(3))
     # print("епта) начали изучать гит))")
 
+# отслеживать апдейты
+# https://api.telegram.org/bot<token>/getUpdates
 
+# https://api.telegram.org/bot1898674417:AAHvwZRAPg1VLDauHToD10pMHELU_FhxSYU/getUpdates
