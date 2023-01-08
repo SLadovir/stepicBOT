@@ -104,3 +104,5 @@ if __name__ == '__main__':
 # https://api.telegram.org/bot<token>/getUpdates
 
 # https://api.telegram.org/bot1898674417:AAHvwZRAPg1VLDauHToD10pMHELU_FhxSYU/getUpdates
+
+# content_types=['any']
