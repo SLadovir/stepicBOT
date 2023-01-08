@@ -28,7 +28,6 @@ if __name__ == '__main__':
 
     counter: int = 0
 
-
     while True:
         start_time = time.time()
         updates = requests.get(f'{API_URL}{BOT_TOKEN}/getUpdates?offset={offset + 1}&timeout={timeout}').json()
@@ -41,4 +40,3 @@ if __name__ == '__main__':
         time.sleep(3)
         end_time = time.time()
         print(f'Время между запросами к Telegram Bot API: {end_time - start_time}')
-
