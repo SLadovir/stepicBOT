@@ -4,6 +4,37 @@ from aiogram import Bot, Dispatcher, executor
 from aiogram.types import Message
 from aiogram.dispatcher.filters import Text
 
+# Приколюхи от Андрея
+import asyncio
+import pickle
+import time
+
+
+def open_dict():
+    try:
+        with open('data.pickle', 'rb') as f:
+            user: dict = pickle.load(f)
+        return user if isinstance(user, dict) else None
+    except FileNotFoundError:
+        user: dict = {}
+        return user
+    except Exception as e:
+        print('Словарь прочитан с ошибками', e)
+    finally:
+        pass
+
+
+async def dump():
+    while True:
+        print(users)
+        with open('data.pickle', 'wb') as f:
+            pickle.dump(users, f)
+        await asyncio.sleep(10)
+
+
+async def on_startup(x):
+    asyncio.create_task(dump())
+
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота, полученный у @BotFather
 BOT_TOKEN: str = '1898674417:AAHvwZRAPg1VLDauHToD10pMHELU_FhxSYU'
@@ -21,7 +52,7 @@ NEGATIVE_ANSWERS: list[str] = ['Нет', 'Не', 'Не хочу']
 
 
 # Словарь, в котором будут храниться словари-состояния пользователей
-users: dict = {}
+# users: dict = {}
 
 
 # Функция возвращает случайное целое число от 1 до 100
@@ -144,9 +175,13 @@ dp.register_message_handler(process_negative_answer, Text(equals=NEGATIVE_ANSWER
 dp.register_message_handler(process_numbers_answer, lambda x: x.text.isdigit() and 1 <= int(x.text) <= 100)
 dp.register_message_handler(process_other_text_answers)
 
-
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+    users = open_dict()
+    if users is not None:
+        executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
+    else:
+        print('Произошла ошибка, бот не запущен')
+    # executor.start_polling(dp, skip_updates=True)
 
 
 
