@@ -45,12 +45,32 @@ async def process_help_command(message: types.Message):
         await message.answer(f'Тут должен был быть {NAME}')
 
 
+# Этот хэндлер будет срабатывать на отправку фото
+@dp.message_handler(content_types=['photo'])
+async def send_photo_echo(message: types.Message):
+    await message.answer_photo(message.photo[0].file_id)
+
+
+# Этот хэндлер будет срабатывать на отправку стикеров
+@dp.message_handler(content_types=['sticker'])
+async def send_sticker_echo(message: types.Message):
+    await message.answer_sticker(message.sticker.file_id)
+
+
 # Этот хэндлер будет срабатывать на любые ваши текстовые сообщения, кроме команд "/start" и "/help"
 @dp.message_handler()
 async def send_echo(message: types.Message):
     await message.reply(message.text)
 
 
-if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+@dp.message_handler()
+async def process_any_update(message: types.Message):
+    # Выводим апдейт в терминал
+    print(message)
+    # Отправляем сообщение в чат, откуда пришел апдейт
+    await message.answer(text='Вы что-то прислали')
 
+
+if __name__ == '__main__':
+    print('Поехали')
+    executor.start_polling(dp, skip_updates=True)
