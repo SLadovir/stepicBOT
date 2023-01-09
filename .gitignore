@@ -8,3 +8,5 @@ venv/
 # config
 config.py
 config/
+
+data.pickle
