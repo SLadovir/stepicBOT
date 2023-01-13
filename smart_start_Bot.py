@@ -1,3 +1,4 @@
+import pytube
 import requests
 from aiogram import Bot, Dispatcher, executor, types
 
@@ -58,6 +59,23 @@ async def send_sticker_echo(message: types.Message):
 
 
 # Этот хэндлер будет срабатывать на любые ваши текстовые сообщения, кроме команд "/start" и "/help"
+@dp.message_handler()
+async def process_help_command(message: types.Message):
+    print('Кто-то хочет Ютубчек')
+    file_path: str = ''
+    if message.text.find('youtube.com'):
+        video_link = message.text
+        yt = pytube.YouTube(video_link)
+        i_tag = 22
+        print('Предподготовка')
+        stream = yt.streams.get_by_itag(i_tag)
+        print('Скачивание')
+        file_path = stream.download()
+        print('Отправка')
+        await bot.send_video(message.chat.id, open(file_path[41:], 'rb'))
+    await message.reply(message.text)
+
+
 @dp.message_handler()
 async def send_echo(message: types.Message):
     await message.reply(message.text)
