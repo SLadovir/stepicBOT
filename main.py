@@ -8,10 +8,10 @@ env = Env()
 env.read_env()
 
 BOT_TOKEN: str = env('BOT_TOKEN')   # Сохраняем значение переменной окружения в переменную bot_token
-admin_id = env.int('ADMIN_ID')   # Преобразуем значение переменной окружения к типу int
+ADMIN_ID = env.int('ADMIN_ID')   # Преобразуем значение переменной окружения к типу int
 
 print(BOT_TOKEN)
-print(admin_id)
+print(ADMIN_ID)
 
 # Создаем объекты бота и диспетчера
 bot: Bot = Bot(token=BOT_TOKEN)
