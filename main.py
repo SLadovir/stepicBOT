@@ -8,7 +8,7 @@ env = Env()
 env.read_env()
 
 BOT_TOKEN: str = env('BOT_TOKEN')   # Сохраняем значение переменной окружения в переменную bot_token
-ADMIN_ID = env.int('ADMIN_ID')   # Преобразуем значение переменной окружения к типу int
+ADMIN_ID: str = env.int('ADMIN_ID')   # Преобразуем значение переменной окружения к типу int
 
 print(BOT_TOKEN)
 print(ADMIN_ID)
