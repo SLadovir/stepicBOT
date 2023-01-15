@@ -18,8 +18,16 @@ def send_cat(res) -> None:
 
 
 if __name__ == '__main__':
+
+    from environs import Env
+
+    # Создаем экземпляр класса Env и Методом read_env() читаем файл .env и загружаем из него переменные в окружение
+    env = Env()
+    env.read_env()
+
+    BOT_TOKEN: str = env('BOT_TOKEN')  # Сохраняем значение переменной окружения в переменную bot_token
+
     API_URL: str = 'https://api.telegram.org/bot'
-    BOT_TOKEN: str = '1898674417:AAHvwZRAPg1VLDauHToD10pMHELU_FhxSYU'
 
     MAX_COUNTER: int = 100
 
