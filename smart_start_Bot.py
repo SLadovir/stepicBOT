@@ -8,6 +8,7 @@ from environs import Env
 # Создаем экземпляр класса Env и Методом read_env() читаем файл .env и загружаем из него переменные в окружение
 env = Env()
 env.read_env()
+print(2)
 
 BOT_TOKEN: str = env('BOT_TOKEN')   # Сохраняем значение переменной окружения в переменную bot_token
 # Создаем объекты бота и диспетчера
