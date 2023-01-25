@@ -6,7 +6,7 @@ from environs import Env
 # Создаем экземпляр класса Env и Методом read_env() читаем файл .env и загружаем из него переменные в окружение
 env = Env()
 env.read_env()
-print(1)
+
 BOT_TOKEN: str = env('BOT_TOKEN')   # Сохраняем значение переменной окружения в переменную bot_token
 ADMIN_ID: str = env.int('ADMIN_ID')   # Преобразуем значение переменной окружения к типу int
 
