@@ -1,13 +1,17 @@
 # virtualenv
 .venv
 venv/
+venv2/
 
 # JetBrains
 .idea/
 
 # config
-config.py
-config/
+#config.py
+#config/
 
 data.pickle
-/.env
+
+.env
+/config_data/.env
+

@@ -1,15 +1,11 @@
 import pytube
 import requests
 from aiogram import Bot, Dispatcher, executor, types
+from config_data.config import load_config
 
-from environs import Env
+config = load_config('<путь к файлу .env>')
 
-
-# Создаем экземпляр класса Env и Методом read_env() читаем файл .env и загружаем из него переменные в окружение
-env = Env()
-env.read_env()
-
-BOT_TOKEN: str = env('BOT_TOKEN')   # Сохраняем значение переменной окружения в переменную bot_token
+BOT_TOKEN: str = config.tg_bot.token   # Сохраняем значение переменной окружения в переменную bot_token
 # Создаем объекты бота и диспетчера
 bot: Bot = Bot(token=BOT_TOKEN)
 dp: Dispatcher = Dispatcher(bot)
