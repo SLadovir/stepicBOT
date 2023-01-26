@@ -29,7 +29,7 @@ def load_config(path: str | None) -> Config:
     # Создаем экземпляр класса Env и Методом read_env() читаем файл .env и загружаем из него переменные в окружение
 
     # Добавляем в переменные окружения данные, прочитанные из файла .env
-    env.read_env()
+    env.read_env(path)
 
     # Создаем экземпляр класса Config и наполняем его данными из переменных окружения
     return Config(tg_bot=TgBot(token=env('BOT_TOKEN'),

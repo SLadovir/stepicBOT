@@ -3,7 +3,7 @@ import requests
 from aiogram import Bot, Dispatcher, executor, types
 from config_data.config import load_config
 
-config = load_config('<путь к файлу .env>')
+config = load_config('config_data/.env')
 
 BOT_TOKEN: str = config.tg_bot.token   # Сохраняем значение переменной окружения в переменную bot_token
 # Создаем объекты бота и диспетчера
